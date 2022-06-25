@@ -1,0 +1,57 @@
+{% extends 'base_officer.html' %}
+{% load static %}
+
+{% block body %}
+
+<div class="col-sm-6">    
+    <canvas id="myChart1" width="100" height="100"></canvas>
+</div>
+
+<div>
+    JMP Hello World
+</div>
+
+<script 
+    src="https://cdn.jsdelivr.net/npm/chart.js"
+>
+</script>
+
+<script>
+
+    const labels = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+    ];
+
+    const data = {
+        labels: labels,
+        datasets: [{
+            label: 'JMP Chart JS Test 1',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [0, 10, 5, 2, 20, 30, 45],
+        }]
+    };
+
+    const config = {
+        type: 'line',
+        data: data,
+        options: {}
+    };
+
+
+</script>
+
+<script>
+    const myChart1 = new Chart(
+      document.getElementById('myChart1'),
+      config
+    );
+</script>
+
+
+{% endblock %}

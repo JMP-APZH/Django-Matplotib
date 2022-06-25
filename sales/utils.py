@@ -18,5 +18,19 @@ def get_graph():
 
 def get_plot(x,y):
     # ... code related to matplotlib
+    #step1 - switching the backend:
+    plt.switch_backend('AGG')
+    #step2 - set size of our figures:
+    plt.figure(figsize=(8,5))
+    
+    plt.title('sales of items')
+    plt.plot(x,y)
+
+    #step3 - change the rotation of the items:
+    plt.xticks(rotation=45)
+
+    plt.xlabel('item')
+    plt.ylabel('price')
+    plt.tight_layout()
     graph = get_graph()
     return graph

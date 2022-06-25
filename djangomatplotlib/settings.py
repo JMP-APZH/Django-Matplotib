@@ -45,7 +45,9 @@ INSTALLED_APPS = [
 
 
     #installed apps:
-    'sales'
+    'sales',
+    'projectplotly',
+    'chartjs'
 ]
 
 MIDDLEWARE = [
