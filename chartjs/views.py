@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Users972
+from .models import Users972, Social972
 import datetime
 from django.db.models import Sum
 
@@ -93,10 +93,42 @@ def studentsView2(request):
     gender_list = ['Male', 'Female']
     gender_number = [male_no, female_no]
 
-    city_list = Users972.objects.all()
-    print(city_list)
+    qs = Users972.objects.all()
+    city_listing1 = []
+    city_users1 = []
+    for x in qs:
+        # x1 = Users972.objects.filter(city=x.city).count()
+        xt = [c.city for c in qs]
+        xt2 = city_users1.append(Users972.objects.filter(city=x.city).count())
+    print('Queryset of Users972:',qs)
+    print('firstname of Users972:',[c.firstname for c in qs])
+    print('lastname of Users972:',[c.lastname for c in qs])
+    print('city of Users972:',[c.city for c in qs])
+    print('course of Users972:',[c.course for c in qs])
+    print('total cities of Users972:',xt)
+    print('total users of Users972:',xt2)
+
+    qs2 = Social972.objects.all()
+    year_listing2 = []
+    year_users2 = []
+    for x in qs2:
+        c2 = Social972.objects.filter(birthyear=x.birthyear).count()
+        year_listing2.append(x.birthyear)
+        year_users2.append(c2)
+    print('Total birthyears in Social972:',year_listing2)
+    print('total users of Social972:',year_users2)
+
 
     course_list = ['Computer Science', 'Computer Engineering', 'Software Engineering', 'Computer Security']
     number_list = [cs_no, ce_no, se_no, sec_no]
-    context = {'course_list':course_list, 'number_list':number_list, 'gender_list':gender_list, 'gender_number':gender_number}
+    context = {
+        'course_list':course_list, 
+        'number_list':number_list, 
+        'gender_list':gender_list, 
+        'gender_number':gender_number,
+        'city_users':city_users,
+        'city_listing':city_listing,
+        'year_listing2':year_listing2,
+        'year_users2':year_users2
+    }
     return render(request, 'officer_home2.html', context)

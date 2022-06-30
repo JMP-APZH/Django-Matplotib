@@ -17,4 +17,19 @@ class Users972(models.Model):
     def __str__(self):
         return self.firstname
 
+class Social972(models.Model):
+
+    birthdate_year = [
+        (1980, '1980'),
+        (1981, '1981'),
+        (1982, '1982'),
+        (1983, '1983')
+    ]
+
+    birthyear = models.IntegerField(choices=birthdate_year)
+    zipcode = models.IntegerField()
+    city1 = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f'{self.birthyear} - {self.zipcode} - {self.city1}'
 
